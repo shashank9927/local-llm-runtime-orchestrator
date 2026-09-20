@@ -1,0 +1,13 @@
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+.audit-postgres/
+.env
+*.log
+.DS_Store
+packages/database/prisma/generated/
+
+# Personal portfolio notes; keep these out of the public project repository.
+docs/cv-description.md
+docs/interview-guide.md

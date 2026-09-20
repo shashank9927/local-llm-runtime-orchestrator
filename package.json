@@ -1,0 +1,34 @@
+{
+  "name": "localllm-runtime-orchestrator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first LLM inference orchestrator with fair scheduling, process supervision, streaming, and crash recovery.",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "dev": "pnpm build && pnpm --filter @localllm/api start",
+    "start": "pnpm --filter @localllm/api start",
+    "cli": "node apps/cli/dist/main.js",
+    "typecheck": "pnpm build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "pretest": "pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "pnpm --filter @localllm/database db:generate",
+    "db:migrate": "pnpm --filter @localllm/database db:migrate",
+    "db:seed": "pnpm --filter @localllm/database db:seed"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.4",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.0",
+    "vitest": "^4.0.16"
+  }
+}

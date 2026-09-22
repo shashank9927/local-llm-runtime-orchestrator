@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum GenerationPriority {
+  interactive
+  normal
+  background
+}
+
+enum GenerationStatus {
+  CREATED
+  QUEUED
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model Generation {
+  id                 String             @id
+  model              String
+  priority           GenerationPriority
+  status             GenerationStatus   @default(CREATED)
+  prompt             String?
+  promptHash         String?
+  promptLength       Int
+  createdAt          DateTime           @default(now())
+  queuedAt           DateTime?
+  startedAt          DateTime?
+  completedAt        DateTime?
+  failedAt           DateTime?
+  cancelledAt        DateTime?
+  workerId           String?
+  errorMessage       String?
+  tokenCount         Int                @default(0)
+  durationMs         Int?
+  queueWaitMs        Int?
+  timeToFirstTokenMs Int?
+  retryCount         Int                @default(0)
+
+  @@index([createdAt(sort: Desc)])
+  @@index([status, priority])
+}
+
+model ModelDefinition {
+  name              String   @id
+  estimatedMemoryMb Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

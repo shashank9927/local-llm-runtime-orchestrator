@@ -1,0 +1,23 @@
+{
+  "name": "@localllm/scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@localllm/contracts": "workspace:*",
+    "bullmq": "^5.66.4",
+    "ioredis": "^5.8.2"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.16"
+  }
+}

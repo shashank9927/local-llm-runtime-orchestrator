@@ -1,0 +1,26 @@
+{
+  "name": "@localllm/cli",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main.js",
+  "bin": {
+    "llm-runtime": "dist/main.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@localllm/contracts": "workspace:*",
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.2",
+    "ora": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "vitest": "^4.0.16"
+  }
+}
